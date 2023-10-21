@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://postgres:181217@db:5432/todo
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres          # Ganti dengan nama pengguna PostgreSQL Anda
+      POSTGRES_PASSWORD: 181217  # Ganti dengan kata sandi PostgreSQL Anda
+      POSTGRES_DB: todo          # Ganti dengan nama database Anda
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
