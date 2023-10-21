@@ -5,7 +5,7 @@ class TodoController {
         try {
             const data = await Todo.findAll({ where: { status: 'active' } });
             if (!data.length) {
-                res.status(404).json({ message: "Data Not Found" });
+                next({ name: 'notFound' });
             } else {
                 res.status(200).json(data);
             }
@@ -19,7 +19,7 @@ class TodoController {
         try {
             const data = await Todo.findOne({ where: { id } });
             if (!data) {
-                res.status(404).json({ message: "Data Not Found" });
+                next({ name: 'notFound' });
             } else {
                 res.status(200).json(data);
             }
@@ -44,7 +44,7 @@ class TodoController {
         try {
             const data = await Todo.update({ title }, { where: { id } });
             if (!data[0]) {
-                res.status(404).json({ message: "Data Not Found" });
+                next({ name: 'notFound' });
             } else {
                 res.status(200).json({ message: "Update successful" });
             }
@@ -58,7 +58,7 @@ class TodoController {
         try {
             const data = await Todo.update({status: 'inactive'},{ where: { id } });
             if (!data) {
-                res.status(404).json({ message: "Data Not Found" });
+                next({ name: 'notFound' });
             } else {
                 res.status(200).json({ message: "Delete successful" });
             }

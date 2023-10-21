@@ -15,7 +15,7 @@ services:
   db:
     image: postgres:latest
     environment:
-      POSTGRES_USER: postgres          # Ganti dengan nama pengguna PostgreSQL Anda
+      POSTGRES_USER: postgres    # Ganti dengan nama pengguna PostgreSQL Anda
       POSTGRES_PASSWORD: 181217  # Ganti dengan kata sandi PostgreSQL Anda
       POSTGRES_DB: todo          # Ganti dengan nama database Anda
     ports:
